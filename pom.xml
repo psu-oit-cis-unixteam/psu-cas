@@ -13,7 +13,7 @@
         <packaging>war</packaging>
         <!-- Version Format: 
              $cas.version.$psu-major.$psu-incremental-$status -->
-        <version>${cas.version}-0.1-test</version>
+        <version>${cas.version}.0.1-test</version>
 
     <!-- Maven plugins -->
     <build>
