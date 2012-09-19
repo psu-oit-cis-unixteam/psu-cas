@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--
+         Local build identity
+         NOTE: <version> is the local package version, increment for changes
+    -->
+    <modelVersion>4.0.0</modelVersion>
+        <groupId>edu.pdx.sso</groupId>
+        <artifactId>psu-cas</artifactId>
+        <packaging>war</packaging>
+        <!-- Version Format: 
+             $cas.version.$psu-major.$psu-incremental-$status -->
+        <version>${cas.version}-0.1-test</version>
+
+    <!-- Maven plugins -->
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                    <configuration>
+                        <warName>cas</warName>
+                    </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- centralize these values for later re-use -->
+    <properties>
+        <cas.version>3.4.10</cas.version>
+        <hibernate.version>3.5.6-Final</hibernate.version>
+        <log4j.version>1.0</log4j.version>
+    </properties>
+
+    <!-- Required packages to build psu cas -->
+    <dependencies>
+        <!-- Core JASIG CAS -->
+        <dependency>
+            <groupId>org.jasig.cas</groupId>
+            <artifactId>cas-server-core</artifactId>
+            <version>${cas.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jasig.cas</groupId>
+            <artifactId>cas-server-webapp</artifactId>
+            <version>${cas.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <!-- LDAP support -->
+        <dependency>
+            <groupId>org.jasig.cas</groupId>
+            <artifactId>cas-server-support-ldap</artifactId>
+            <version>${cas.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- JBOSS/shared ticket state support -->
+        <dependency>
+            <groupId>org.jasig.cas</groupId>
+            <artifactId>cas-server-integration-jboss</artifactId>
+            <version>${cas.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- extended log4j logging support -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>apache-log4j-extras</artifactId>
+            <version>${log4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Hibernate support for Ticket/Service registries -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-annotations</artifactId>
+            <version>${hibernate.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+    </dependencies>
+
+    <!-- Get the afforementioned dependencies from where?? -->
+    <repositories>
+        <repository>
+            <id>ja-sig</id>
+            <url>http://oss.sonatype.org/content/repositories/releases/</url>
+        </repository>
+    </repositories>
+</project>
