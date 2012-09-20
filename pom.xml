@@ -20,6 +20,19 @@ Local theme overlay and some custom configurations for JASIG CAS.
             <name>Portland State University - Office of Information Technologies</name>
             <url>https://github.com/psu-oit-cis-unixteam</url>
         </organization>
+    
+    <!-- Centralize these values for later re-use -->
+    <properties>
+        <cas.version>3.4.10</cas.version>
+        <hibernate.version>3.5.6-Final</hibernate.version>
+        <log4j.version>1.0</log4j.version>
+        <rpm-maven.version>2.1-alpha-2</rpm-maven.version>
+        <!-- NOTE: This is the local package version, increment for changes
+             Local version Format: 
+             $psu-major.$psu-incremental.$status -->
+        <psu-cas.version>0.1.test</psu-cas.version>
+        <psu-cas.prefix>/var/lib/tomcat5/webapps</psu-cas.prefix>
+    </properties>
 
     <!-- Maven plugins -->
     <build>
@@ -95,19 +108,6 @@ Local theme overlay and some custom configurations for JASIG CAS.
 
         </plugins>
     </build>
-
-    <!-- Centralize these values for later re-use -->
-    <properties>
-        <cas.version>3.4.10</cas.version>
-        <hibernate.version>3.5.6-Final</hibernate.version>
-        <log4j.version>1.0</log4j.version>
-        <rpm-maven.version>2.1-alpha-2</rpm-maven.version>
-        <!-- NOTE: This is the local package version, increment for changes
-             Local version Format: 
-             $psu-major.$psu-incremental.$status -->
-        <psu-cas.version>0.1.test</psu-cas.version>
-        <psu-cas.prefix>/var/lib/tomcat5/webapps</psu-cas.prefix>
-    </properties>
 
     <!-- Required packages to build psu cas -->
     <dependencies>
