@@ -20,9 +20,9 @@
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
-                    <configuration>
-                        <warName>cas</warName>
-                    </configuration>
+                <configuration>
+                    <warName>cas</warName>
+                </configuration>
             </plugin>
         </plugins>
     </build>
