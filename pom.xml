@@ -14,6 +14,15 @@
         <!-- Version Format: 
              $cas.version.$psu-major.$psu-incremental-$status -->
         <version>${cas.version}.0.1-test</version>
+        <!-- the tag is name, but the meaning is more like "sub-title" -->
+        <name>Local CAS overlay for Portland State University</name>
+        <description>
+Local theme overlay and some custom configurations for JASIG CAS.
+        </description>
+        <organization>
+            <name>Portland State University - Office of Information Technologies</name>
+            <url>https://github.com/psu-oit-cis-unixteam</url>
+        </organization>
 
     <!-- Maven plugins -->
     <build>
