@@ -29,8 +29,8 @@ Local theme overlay and some custom configurations for JASIG CAS.
         <rpm-maven.version>2.1-alpha-2</rpm-maven.version>
         <!-- NOTE: This is the local package version, increment for changes
              Local version Format: 
-             $psu-major.$psu-incremental.$status -->
-        <psu-cas.version>0.1.test</psu-cas.version>
+             $psu-major.$psu-incremental.maven-build-profile -->
+        <psu-cas.version>0.1.${project.activeProfiles[0].id}</psu-cas.version>
         <psu-cas.prefix>/var/lib/tomcat5/webapps</psu-cas.prefix>
         <!-- In EL tomcat.version is like tomcat{5,6,7},
              the full version is like {5,6,7}.\d.\d -->
@@ -138,14 +138,6 @@ Local theme overlay and some custom configurations for JASIG CAS.
             <scope>runtime</scope>
         </dependency>
 
-        <!-- JBOSS/shared ticket state support -->
-        <dependency>
-            <groupId>org.jasig.cas</groupId>
-            <artifactId>cas-server-integration-jboss</artifactId>
-            <version>${cas.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-
         <!-- extended log4j logging support -->
         <dependency>
             <groupId>log4j</groupId>
@@ -169,6 +161,25 @@ Local theme overlay and some custom configurations for JASIG CAS.
         </dependency>
 
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>production</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <dependencies>
+                <!-- JBOSS/shared ticket state support for production -->
+                <dependency>
+                    <groupId>org.jasig.cas</groupId>
+                    <artifactId>cas-server-integration-jboss</artifactId>
+                    <version>${cas.version}</version>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+
+    </profiles>
 
     <!-- Get the afforementioned dependencies from where?? -->
     <repositories>
