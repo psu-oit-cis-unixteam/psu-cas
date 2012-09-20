@@ -5,7 +5,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <!--
          Local build identity
-         NOTE: <version> is the local package version, increment for changes
     -->
     <modelVersion>4.0.0</modelVersion>
         <groupId>edu.pdx.sso</groupId>
@@ -77,6 +76,7 @@ Local theme overlay and some custom configurations for JASIG CAS.
                                 </source>
                             </sources>
                         </mapping>
+
                         <mapping>
                             <directory>/etc/cas</directory>
                             <configuration>true</configuration>
@@ -96,13 +96,14 @@ Local theme overlay and some custom configurations for JASIG CAS.
         </plugins>
     </build>
 
-    <!-- centralize these values for later re-use -->
+    <!-- Centralize these values for later re-use -->
     <properties>
         <cas.version>3.4.10</cas.version>
         <hibernate.version>3.5.6-Final</hibernate.version>
         <log4j.version>1.0</log4j.version>
         <rpm-maven.version>2.1-alpha-2</rpm-maven.version>
-        <!-- Local version Format: 
+        <!-- NOTE: This is the local package version, increment for changes
+             Local version Format: 
              $psu-major.$psu-incremental.$status -->
         <psu-cas.version>0.1.test</psu-cas.version>
         <psu-cas.prefix>/var/lib/tomcat5/webapps</psu-cas.prefix>
