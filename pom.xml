@@ -10,7 +10,8 @@
         <groupId>edu.pdx.sso</groupId>
         <artifactId>psu-cas</artifactId>
         <packaging>war</packaging>
-        <version>${cas.version}.${psu-cas.version}</version>
+        <!-- version is [selected CAS version].[PSU CAS local version].[maven build profile] -->
+        <version>${cas.version}.${psu-cas.version}.${project.activeProfiles[0].id}</version>
         <!-- the tag is name, but the meaning is more like "sub-title" -->
         <name>Local CAS overlay for Portland State University</name>
         <description>
@@ -29,8 +30,8 @@ Local theme overlay and some custom configurations for JASIG CAS.
         <rpm-maven.version>2.1-alpha-2</rpm-maven.version>
         <!-- NOTE: This is the local package version, increment for changes
              Local version Format: 
-             $psu-major.$psu-incremental.maven-build-profile -->
-        <psu-cas.version>0.1.${project.activeProfiles[0].id}</psu-cas.version>
+                $psu-major.$psu-incremental -->
+        <psu-cas.version>0.1</psu-cas.version>
         <psu-cas.prefix>/var/lib/tomcat5/webapps</psu-cas.prefix>
         <!-- In EL tomcat.version is like tomcat{5,6,7},
              the full version is like {5,6,7}.\d.\d -->
