@@ -31,6 +31,68 @@ Local theme overlay and some custom configurations for JASIG CAS.
                     <warName>cas-${project.version}</warName>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <!-- produce an rpm as a side effect to producing a .war -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>rpm-maven-plugin</artifactId>
+                <version>${rpm-maven.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>rpm</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <!-- Details for the RPM -->
+                <configuration>
+                    <copyright>http://www.jasig.org/cas/license</copyright>
+                    <distribution>PSU CAS</distribution>
+                    <group>Applications/Internet</group>
+                    <targetVendor>unknown</targetVendor> <!-- is this right for el*? -->
+                    <packager>${env.USER}</packager>
+                    <prefix>${psu-cas.prefix}</prefix>
+
+                    <defineStatements>
+                        <defineStatement>_unpackaged_files_terminate_build 0</defineStatement>
+                    </defineStatements>
+                    
+                    <!-- RPM dep management -->
+                    <provides>
+                        <provide>${project.artifactId}</provide>
+                    </provides>
+                    <requires>
+                        <require>tomcat5 &gt; 5.5.23</require>
+                    </requires>
+                   
+                    <!-- the %files section of the spec, more-or-less -->
+                    <mappings>
+                        <mapping>
+                            <directory>${psu-cas.prefix}/cas</directory>
+                            <username>tomcat</username>
+                            <groupname>tomcat</groupname>
+                            <sources>
+                                <source>
+                                    <location>target/${project.artifactId}-${project.version}</location>
+                                </source>
+                            </sources>
+                        </mapping>
+                        <mapping>
+                            <directory>/etc/cas</directory>
+                            <configuration>true</configuration>
+                            <username>root</username>
+                            <groupname>tomcat</groupname>
+                            <sources>
+                                <softlinkSource>
+                                    <location>${psu-cas.prefix}/cas/WEB-INF</location>
+                                </softlinkSource>
+                            </sources>
+                        </mapping>
+
+                    </mappings>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -39,9 +101,11 @@ Local theme overlay and some custom configurations for JASIG CAS.
         <cas.version>3.4.10</cas.version>
         <hibernate.version>3.5.6-Final</hibernate.version>
         <log4j.version>1.0</log4j.version>
+        <rpm-maven.version>2.1-alpha-2</rpm-maven.version>
         <!-- Local version Format: 
              $psu-major.$psu-incremental.$status -->
         <psu-cas.version>0.1.test</psu-cas.version>
+        <psu-cas.prefix>/var/lib/tomcat5/webapps</psu-cas.prefix>
     </properties>
 
     <!-- Required packages to build psu cas -->
