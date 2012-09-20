@@ -11,9 +11,7 @@
         <groupId>edu.pdx.sso</groupId>
         <artifactId>psu-cas</artifactId>
         <packaging>war</packaging>
-        <!-- Version Format: 
-             $cas.version.$psu-major.$psu-incremental-$status -->
-        <version>${cas.version}.0.1-test</version>
+        <version>${cas.version}.${psu-cas.version}</version>
         <!-- the tag is name, but the meaning is more like "sub-title" -->
         <name>Local CAS overlay for Portland State University</name>
         <description>
@@ -41,6 +39,9 @@ Local theme overlay and some custom configurations for JASIG CAS.
         <cas.version>3.4.10</cas.version>
         <hibernate.version>3.5.6-Final</hibernate.version>
         <log4j.version>1.0</log4j.version>
+        <!-- Local version Format: 
+             $psu-major.$psu-incremental.$status -->
+        <psu-cas.version>0.1.test</psu-cas.version>
     </properties>
 
     <!-- Required packages to build psu cas -->
