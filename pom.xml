@@ -32,6 +32,8 @@ Local theme overlay and some custom configurations for JASIG CAS.
              $psu-major.$psu-incremental.$status -->
         <psu-cas.version>0.1.test</psu-cas.version>
         <psu-cas.prefix>/var/lib/tomcat5/webapps</psu-cas.prefix>
+        <tomcat.version>tomcat5</tomcat.version>
+        <tomcat.version.minimum>5.5.0</tomcat.version.minimum>
     </properties>
 
     <!-- Maven plugins -->
@@ -74,7 +76,9 @@ Local theme overlay and some custom configurations for JASIG CAS.
                         <provide>${project.artifactId}</provide>
                     </provides>
                     <requires>
-                        <require>tomcat5 &gt; 5.5.23</require>
+                        <!-- In EL tomcat.version is like tomcat{5,6,7},
+                             the full version is like {5,6,7}.\d.\d -->
+                        <require>${tomcat.version} &gt; ${tomcat.version.minimum}</require>
                     </requires>
                    
                     <!-- the %files section of the spec, more-or-less -->
