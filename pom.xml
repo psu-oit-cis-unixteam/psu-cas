@@ -21,7 +21,7 @@
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
-                    <warName>cas</warName>
+                    <warName>cas-${project.version}</warName>
                 </configuration>
             </plugin>
         </plugins>
