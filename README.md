@@ -10,4 +10,4 @@ This will emit a WAR and also an RPM.
 
 To change built versions:
 -------------------------
-- Refer to the <properties> block of pom.xml
+- Refer to the \<properties\> block of pom.xml
